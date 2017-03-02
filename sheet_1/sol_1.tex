@@ -1,0 +1,153 @@
+\input{header.tex}
+
+\title{Solutions Sheet 1}
+\author{Yannis B\"{a}hni}
+\address[Yannis B\"{a}hni]{University of Zurich, R\"{a}mistrasse 71, 8006 Zurich}
+\email[Yannis B\"{a}hni]{\href{mailto:yannis.baehni@uzh.ch}{yannis.baehni@uzh.ch}}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+\begin{enumerate}[label = \textbf{Exercise \arabic*.},wide = 0pt, itemsep=1.5ex]
+\item
+	First we label the balls: the green ones with $\cbr[0]{1,\dots,17}$, the blue ones with $\cbr[0]{18,\dots,22}$ and the red ones with $\cbr[0]{23,\dots,33}$.
+	\begin{enumerate}[label = \arabic*.,wide = 0pt, itemsep=1.5ex]
+		\item Define the sample space as
+			\begin{equation*}
+				\Omega := \cbr[0]{\omega : \omega = (a_1,a_2), a_j \neq a_k, j\neq k, a_i \in \cbr[0]{1,\dots,33}}.
+			\end{equation*}
+
+			Assume the outcomes are equally probable. Then 
+			\begin{equation*}
+				P(A) = \frac{\abs[0]{A}}{\abs[0]{\Omega}} = \frac{\abs[0]{A}}{33 \cdot 32}
+			\end{equation*}
+
+			\noindent for any $A \in 2^\Omega$. Therefore
+			\begin{equation*}
+				P(\cbr[0]{\text{none red}}) = \frac{\abs[0]{\cbr[0]{\omega : \omega = (a_1,a_2), a_j \neq a_k, j\neq k, a_i \in \cbr[0]{1,\dots,22}}}}{33 \cdot 32}= \frac{22 \cdot 21}{33 \cdot 32}= \frac{7}{16}
+			\end{equation*}
+
+		\item Define the sample space as 
+			\begin{equation*}
+				\Omega := \cbr[0]{\omega : \omega = (a_1,a_2,a_3), a_i \in \cbr[0]{1,\dots,33}} \qquad \abs[0]{\Omega} = 33^3.
+			\end{equation*}
+
+			Now we have 
+			
+			\begin{equation*}
+				P(\cbr[0]{\text{at most two green}}) = 1 - P(\cbr[0]{\text{exactly three green}})
+			\end{equation*}
+
+			\noindent and so by 
+			\begin{equation*}
+				P(\cbr[0]{\text{exactly three green}}) = \del[3]{\frac{17}{33}}^3
+			\end{equation*}
+
+			\noindent we get 
+			\begin{equation*}
+				P(\cbr[0]{\text{at most two green}}) = 1 - \del[3]{\frac{17}{33}}^3
+			\end{equation*}
+	\end{enumerate}
+\item
+	This can be modeled by sampling without replacement if we draw one card after the other. Therefore we consider the sample space
+		\begin{equation*}
+				\Omega := \cbr[0]{\omega : \omega = (a_1,a_2,a_3,a_4,a_5), a_j \neq a_k, j\neq k, a_i \in \cbr[0]{1,\dots,52}}.
+		\end{equation*}
+
+		Thus
+		\begin{equation}
+			\abs[0]{\Omega} = 52 \cdot 51 \cdot 50 \cdot 49 \cdot 48.
+		\end{equation}
+	\begin{enumerate}[label = \arabic*.,wide = 0pt, itemsep=1.5ex]
+		\item 
+			We have
+			\begin{equation*}
+				P(\cbr[0]{\text{same suit}}) = \frac{\abs[0]{A_1 \cup A_2 \cup A_3 \cup A_4}}{52 \cdot 51 \cdot 50 \cdot 49 \cdot 48} = \frac{4 \cdot 13 \cdot 12 \cdot 11 \cdot 10 \cdot 9}{52 \cdot 51 \cdot 50 \cdot 49 \cdot 48} = \frac{33}{16660}
+			\end{equation*}
+
+			\noindent where 
+			\begin{align*}
+				A_1 &:= \cbr[0]{\omega : \omega = (a_1,a_2,a_3,a_4,a_5), a_j \neq a_k, j\neq k, a_i \in \cbr[0]{1,\dots,13}}\\
+				A_2 &:= \cbr[0]{\omega : \omega = (a_1,a_2,a_3,a_4,a_5), a_j \neq a_k, j\neq k, a_i \in \cbr[0]{14,\dots,26}}\\
+				A_3 &:= \cbr[0]{\omega : \omega = (a_1,a_2,a_3,a_4,a_5), a_j \neq a_k, j\neq k, a_i \in \cbr[0]{27,\dots,39}}\\
+				A_4 &:= \cbr[0]{\omega : \omega = (a_1,a_2,a_3,a_4,a_5), a_j \neq a_k, j\neq k, a_i \in \cbr[0]{40,\dots,52}}
+			\end{align*}
+	
+		\item It is enough to consider the case $(a_1,a_2,a_3,a_4,a_5)$ where the first four have the same rank due to symmetry (formally we form a partition as in part a) of five subsets). For $a_1$ we have $52$ possibilities, for $a_2$ we have $3$ since there are only three cards of the same rank left, for $a_3$ we have $2$, for $a_4$ we have exactly one and finally for $a_5$ we have $48$ possibilities. Therefore we get
+			\begin{equation*}
+				P(\cbr[0]{\text{four cards same rank}}) = \frac{5 \cdot 52 \cdot 3 \cdot 2 \cdot 48}{52 \cdot 51 \cdot 50 \cdot 49 \cdot 48} = \frac{1}{4165}.
+			\end{equation*}
+		\item Again, let us consider the simplest case where the card with the lowest rank is $a_1$. Hence, for $a_1$ we have $40$ possibilities. This is due to the fact, that if we start with $10$, $11$ or $12$ we would not get an increasing sequence. For the four succeeding cards we have in total $4^4$ possibilities. Now it does not matter if we pick first the highest card or the lowest, so we have to multiply the possibilities with $S\abs[0]{S_5} = 5!$ Therefore we get
+			\begin{equation*}
+				P(\cbr[0]{\text{five cards sequential rank}}) = \frac{5! \cdot 40 \cdot 4^4}{52 \cdot 51 \cdot 50 \cdot 49 \cdot 48} = \frac{128}{32487}.
+			\end{equation*}
+		\item
+			Again, we consider a simple case where the first three cards are of the same rank and then the other two follow. Therefore
+			\begin{equation*}
+				P(\cbr[0]{\text{full house}}) = \frac{{5 \choose 3} \cdot 52 \cdot 3 \cdot 2 \cdot 48 \cdot 3}{52 \cdot 51 \cdot 50 \cdot 49 \cdot 48} = \frac{6}{4165}.
+			\end{equation*}
+
+	\end{enumerate}
+\item
+	We propose that
+	\begin{equation}
+		\sigma(\mathcal{C}) = \cbr[0]{\cup_{\iota \in I} C_\iota : I \subseteq \cbr[0]{1,\dots,n}} =: \mathcal{A}.
+	\end{equation}
+	
+	Firstly, $\Omega \in \mathcal{A}$ since $\Omega = \cup_{i = 1}^n C_i$. Let $(A_i)_{i \in \mathbb{N}}$ be a family in $\mathcal{A}$. Then $A_i = \cup_{\iota \in I_j} C_\iota$ for $I_j \subseteq \cbr[0]{1,\dots,n}$ and $j \in \mathbb{N}$. But then it is clearly seen that $\cup_{i \in \mathbb{N}} A_i \in \mathcal{A}$. Lastly, to show that $\mathcal{A}$ is also closed under complementation it is enough to show that $C_i^c \in \mathcal{A}$ for any $i = 1,\dots,n$ and that $\mathcal{A}$ is closed under finite intersections. Fix some $i \in \cbr[0]{1,\dots,n}$. Then it is easy to see that $C_i^c = \cup_{j \neq i}C_j \in \mathcal{A}$. Furthermore, if $A,B \in \mathcal{A}$, we have $A = \cup_{\iota \in I_1} C_\iota$ and $B = \cup_{j \in J} C_j$. Hence 
+	\begin{equation*}
+		A \cap B = (\cup_{\iota \in I_1} C_\iota) \cap (\cup_{j \in J} C_j) = \cup_{\iota \in I \cap J}C_\iota \in \mathcal{A}.
+	\end{equation*}
+
+	Obviously, $\mathcal{C} \subseteq \mathcal{A}$ and thus $\sigma(\mathcal{C}) \subseteq \mathcal{A}$. The inclusion $\mathcal{A} \subseteq \sigma(\mathcal{C})$ is trivial.
+\item 
+	~
+	\begin{enumerate}[label = \arabic*.,wide = 0pt, itemsep=1.5ex]
+		\item We will show 
+			\begin{equation}
+				-P(A \Delta B) \leq P(A) - P(B) \leq P(A \Delta B).
+				\label{eq:statement}
+			\end{equation}
+
+			The first inequality is equivalent to
+			\begin{equation*}
+				P(B) - P(A) \leq P(A \Delta B)
+			\end{equation*}
+
+			\noindent which is easily verified by considering
+			\begin{equation*}
+				P(A \Delta B) = P((A \cup B) \setminus (A\cap B)) = P(A \cup B) - P(A \cap B) \geq P(B) - P(A)
+			\end{equation*}
+
+			\noindent since $B \subseteq A \cup B$ and $A \cap B \subseteq A$. Similarly the second inequality in (\ref{eq:statement}) follows from
+			\begin{equation*}
+				P(A \Delta B) = P((A \cup B) \setminus (A\cap B)) = P(A \cup B) - P(A \cap B) \geq P(A) - P(B)
+			\end{equation*}
+
+			\noindent since $B \subseteq A \cup B$ and $A \cap B \subseteq B$.
+		\item Define a sequence 
+			\begin{equation*}
+				B_n := \cap_{i = 1}^n A_i
+			\end{equation*}
+
+			\noindent for $n \in \mathbb{N}$. Clearly $(B_n)_{n \in \mathbb{N}}$ is decreasing and 
+			\begin{equation*}
+				\cap_{n \in \mathbb{N}}B_n = \cap_{n \in \mathbb{N}} A_n.
+			\end{equation*}
+
+			Hence 
+			\begin{align*}
+				P(\cap_{n \in \mathbb{N}} A_n) &= P(\cap_{n \in \mathbb{N}}B_n)\\
+				&= \lim_{n \to \infty} P(B_n)\\
+				&= \lim_{n \to \infty} P(\cap_{i = 1}^n A_i)\\
+				&= 1 - \lim_{n \to \infty} P(\cup_{i = 1}^nA_i^c)\\
+				&\geq 1 - \lim_{n \to \infty} \sum_{i = 1}^n P(A_i^c)\\
+				&= 1.
+			\end{align*}
+
+			\noindent by continuity from above of the probability measure $P$.
+	\end{enumerate}
+\end{enumerate}
+%\originalsectionstyle
+%\printbibliography
+\end{document}

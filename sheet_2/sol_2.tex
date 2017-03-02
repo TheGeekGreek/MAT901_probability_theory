@@ -1,0 +1,35 @@
+\input{header.tex}
+
+\title{Solutions Sheet 2}
+\author{Yannis B\"{a}hni}
+\address[Yannis B\"{a}hni]{University of Zurich, R\"{a}mistrasse 71, 8006 Zurich}
+\email[Yannis B\"{a}hni]{\href{mailto:yannis.baehni@uzh.ch}{yannis.baehni@uzh.ch}}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+\begin{enumerate}[label = \textbf{Exercise \arabic*.},wide = 0pt, itemsep=1.5ex]
+	\item Let $(\Omega,\mathcal{A},P)$ be a probability space. Recall, that for $A \in \mathcal{A}$ with $P(A) > 0$ the \emph{conditional probability of $B$ with respect to $A$} is defined by
+		\begin{equation}
+			P(B \vert A) := \frac{P(B \cap A)}{P(A)}.
+		\end{equation}
+		\begin{enumerate}[label = \arabic*.,wide = 0pt, itemsep=1.5ex]
+			\item Let $A_1,A_2 \in \mathcal{A}$ with $0 < P(A_2) < 1$. Observe, that by $0 < P(A_2) < 1$ the conditional probability $P(B\vert A_2^c)$ is well-defined since $P(A_2^c) = 1 - P(A_2) > 0$. Thus
+				\begin{align*}
+					P(A_1) &= P((A_1 \cap A_2) \cup (A_1 \cap A_2^c))\\
+					&= P(A_1 \cap A_2) + P(A_1 \cap A_2^c)\\
+					&= \frac{P(A_1 \cap A_2)}{P(A_2)}P(A_2) + \frac{P(A_1 \cap A_2^c)}{P(A_2^c)}P(A_2^c)\\
+					&= P(A_1 \vert A_2)P(A_2) + P(A_1 \vert A_2^c)P(A_2^c).
+				\end{align*}
+
+			\item We have 
+				\begin{equation*}
+					P(A_3 \vert A_1 \cap A_2) = \frac{P(A_3 \cap A_1 \cap A_2)}{P(A_1 \cap A_2)} = \frac{P(A_3)P(A_1)P(A_2)}{P(A_1)P(A_2)} = P(A_3).
+				\end{equation*}
+
+			\item
+		\end{enumerate}
+\end{enumerate}
+%\originalsectionstyle
+%\printbibliography
+\end{document}
