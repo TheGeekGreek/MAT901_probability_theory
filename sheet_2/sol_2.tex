@@ -27,9 +27,51 @@
 					P(A_3 \vert A_1 \cap A_2) = \frac{P(A_3 \cap A_1 \cap A_2)}{P(A_1 \cap A_2)} = \frac{P(A_3)P(A_1)P(A_2)}{P(A_1)P(A_2)} = P(A_3).
 				\end{equation*}
 
-			\item
+			\item First we prove two auxiliary results. 
+				\begin{lemma}
+					Let $A_1, \dots,A_n \in \mathcal{A}$ be independent. Then $A_1^c, \dots, A_n^c$ are independent.
+					\label{lem:independence_complements}
+				\end{lemma}
+
+				\begin{proof}
+					It is enough to consider the case $A_1,\dots,A_{i - 1},A_i^c,A_{i + 1},\dots,A_n$ for some $i \in \cbr[0]{1,\dots,n}$. Let $I \subseteq \cbr[0]{1,\dots,n}$. If $i \notin I$, there is nothing to prove. So assume $i \in I$. Then we have
+					\begin{align*}
+						P\del[4]{A_i^c \cap \bigcap_{\iota \in I \setminus \cbr[0]{i}} A_\iota} &= P\del[4]{\bigcap_{\iota \in I \setminus \cbr[0]{i}}A_\iota}- P\del[4]{\bigcap_{\iota \in I} A_\iota}\\
+						&= \prod_{\iota \in I \setminus \cbr[0]{i}} P(A_\iota) - \prod_{\iota \in I} P(A_\iota)\\
+						&= (1 - P(A_i))\prod_{\iota \in I \setminus \cbr[0]{i}} P(A_\iota)\\
+						&= P(A_i^c) \prod_{\iota \in I \setminus \cbr[0]{i}} P(A_\iota).
+					\end{align*}
+				\end{proof}
+
+				\begin{lemma}
+					Let $f: \intco{0,1} \to \mathbb{R}$ be defined by $f(x) := \log(1-x)+x$. Then $f \leq 0$.
+					\label{lem:fun}
+				\end{lemma}
+
+				\begin{proof}
+					$f$ is clearly differentiable on $\intco{0,1}$ with
+					\begin{equation}
+						f'(x) = 1 - \frac{1}{1 - x} = \frac{x}{x - 1} \leq 0.
+					\end{equation}
+
+					Hence $f$ is monotonically decreasing on $\intco{0,1}$. By $f(0) = 0$ we conclude $f \leq 0$.
+				\end{proof}
+				If $P(A_i) = 1$ for some $i \in \cbr[0]{1,\dots,n}$ we have
+				\begin{equation*}
+					P\del[4]{\del[4]{\bigcup_{j = 1}^n A_j}^c} \leq P(A_i^c) = 0 \leq \exp\del[4]{-\sum_{j = 1}^n P(A_j)}
+				\end{equation*}
+
+				\noindent since $A_i \subseteq \bigcup_{j = 1}^n A_j$. Therefore it is enough to consider $P(A_i) < 1$ for $i = 1,\dots,n$. Using lemma \ref{lem:independence_complements} and \ref{lem:fun} we get
+				\begin{align*}
+					P\del[4]{\del[4]{\bigcup_{i = 1}^n A_i}^c} &= P\del[4]{\bigcap_{i = 1}^n A_i^c}\\
+					&= \prod_{i = 1}^n P(A_i^c)\\
+					&= \exp \del[4]{\log \del[4]{\prod_{i = 1}^n P(A_i^c)}}\\
+					&= \exp \del[4]{\sum_{i = 1}^n \log(P(A_i^c))}\\
+					&= \exp \del[4]{\sum_{i = 1}^n \log(1 - P(A_i))}\\
+					&\leq \exp \del[4]{-\sum_{i = 1}^n P(A_i)}
+				\end{align*}
 		\end{enumerate}
 \end{enumerate}
 %\originalsectionstyle
-%\printbibliography
+\printbibliography
 \end{document}
