@@ -22,14 +22,16 @@
 					&= P(A_1 \vert A_2)P(A_2) + P(A_1 \vert A_2^c)P(A_2^c).
 				\end{align*}
 
-			\item We have 
+			\item We simply have 
 				\begin{equation*}
 					P(A_3 \vert A_1 \cap A_2) = \frac{P(A_3 \cap A_1 \cap A_2)}{P(A_1 \cap A_2)} = \frac{P(A_3)P(A_1)P(A_2)}{P(A_1)P(A_2)} = P(A_3).
 				\end{equation*}
 
+				\noindent from the definition of independence.
+
 			\item First we prove two auxiliary results. 
 				\begin{lemma}
-					Let $A_1, \dots,A_n \in \mathcal{A}$ be independent. Then $A_1^c, \dots, A_n^c$ are independent.
+					Let $A_1, \dots,A_n \in \mathcal{A}$ be independent. Then $A_1^c, \dots, A_n^c$ are also independent.
 					\label{lem:independence_complements}
 				\end{lemma}
 
@@ -68,7 +70,7 @@
 					&= \exp \del[4]{\log \del[4]{\prod_{i = 1}^n P(A_i^c)}}\\
 					&= \exp \del[4]{\sum_{i = 1}^n \log(P(A_i^c))}\\
 					&= \exp \del[4]{\sum_{i = 1}^n \log(1 - P(A_i))}\\
-					&\leq \exp \del[4]{-\sum_{i = 1}^n P(A_i)}
+					&\leq \exp \del[4]{-\sum_{i = 1}^n P(A_i)}.
 				\end{align*}
 		\end{enumerate}
 \end{enumerate}
