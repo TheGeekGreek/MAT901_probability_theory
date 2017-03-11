@@ -1,0 +1,63 @@
+\input{header.tex}
+\DeclareMathOperator{\Poi}{Poi}
+\DeclareMathOperator{\Bin}{Bin}
+
+\title{Solutions Sheet 3}
+\author{Yannis B\"{a}hni}
+\address[Yannis B\"{a}hni]{University of Zurich, R\"{a}mistrasse 71, 8006 Zurich}
+\email[Yannis B\"{a}hni]{\href{mailto:yannis.baehni@uzh.ch}{yannis.baehni@uzh.ch}}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+\begin{enumerate}[label = \textbf{Exercise \arabic*.},wide = 0pt, itemsep=1.5ex]
+	\item 
+		\begin{enumerate}[label = \arabic*.,wide = 0pt, itemsep=1.5ex]
+			\item We can write $\xi = \xi_1 + \dots + \xi_n$ and $\eta = \eta_1 + \dots + \eta_m$. Let $0 \leq k \leq m + n$. Using exercise $6$ \cite[217]{shiryaev2016probability} yields 
+				\begin{align*}
+					P\cbr[0]{\xi + \eta = k} &= \sum_{\substack{x \in \cbr[0]{0,1}^{m + n}\\\sum_\iota x_\iota = k}} P\cbr[0]{\xi_1 = x_1,\dots,\xi_n = x_n,\eta_1 =x_{n + 1},\dots,\eta_m = x_{m + n}}\\
+					&= \sum_{\substack{x \in \cbr[0]{0,1}^{m + n}\\\sum_\iota x_\iota = k}} P\cbr[0]{\xi_1 = x_1}\cdots P\cbr[0]{\xi_n = x_n} P\cbr[0]{\eta_1 = x_{n + 1}}\cdots P\cbr[0]{\eta_m = x_{m + n}}\\
+					&= {m + n \choose k}p^k (1 - p)^{m + n - k}.
+				\end{align*}
+
+				Hence $\xi + \eta \sim \Bin(m + n,p)$.
+
+			\item Assuming $\xi_1$ and $\xi_2$ are two independent Binomial random variables (a random variable $\xi$ is a Binomial random variable if it takes values $k = 0,1,\dots,n$ with probabilities $p_k := {n \choose k}p^k (1 - p)^{n - k}$ for some $0 \leq p \leq 1$). Let $0 \leq k \leq m + n$. Note that 
+				\begin{equation}
+					\cbr[0]{\xi_1 + \xi_2 = k} = \bigsqcup_{i + j = k}\cbr[0]{\xi_1 = i, \xi_2 = j}.
+					\label{eq:ex_1_2}
+				\end{equation}
+		
+				Equation (\ref{eq:ex_1_2}), the mutually independence of $\xi_1$ and $\xi_2$ and the stated binomial identity yields
+				\begin{align*}
+					P\cbr[0]{\xi_1 + \xi_2 = k} &= \sum_{i + j = k}P\cbr[0]{\xi_1 = i, \xi_2 = j}\\
+					&= \sum_{i + j = k} P\cbr[0]{\xi_1 = i}P\cbr[0]{\xi_2 = j}\\
+					&= p^k (1 - p)^{m + n - k}\sum_{i + j = k} {n \choose i}{m \choose j}\\
+					&= {m + n \choose k} p^k (1 - p)^{m + n - k}.
+				\end{align*}
+
+				Hence $\xi_1 + \xi_2 \sim \Bin(m + n,p)$.
+
+
+			\item Se separate sheet.
+			\item Assuming $\xi_1$ and $\xi_2$ are two independent Poisson random variables (a random variable $\xi$ is a Poisson random variable if it takes values $k = 0,1,2,\dots$ with probabilities $p_k := e^{-\lambda}\lambda^k/k!$ for some $\lambda > 0$) with parameters, respectively, $\lambda_1 > 0$ and $\lambda_2 > 0$. Let $k \in \mathbb{N}_0$. Note that 
+				\begin{equation}
+					\cbr[0]{\xi_1 + \xi_2 = k} = \bigsqcup_{i + j = k}\cbr[0]{\xi_1 = i, \xi_2 = j} = \bigsqcup_{i = 0}^k \cbr[0]{\xi_1 = i, \xi_2 = k - i}.
+					\label{eq:ex_1_4}
+				\end{equation}
+		
+				Equation (\ref{eq:ex_1_4}) and the mutually independence of $\xi_1$ and $\xi_2$ yields
+				\begin{align*}
+					P\cbr[0]{\xi_1 + \xi_2 = k} &= \sum_{i = 0}^k P\cbr[0]{\xi_1 = i, \xi_2 = k - i}\\
+					&= \sum_{i = 0}^k P\cbr[0]{\xi_1 = i}P\cbr[0]{\xi_2 = k - i}\\
+					&= e^{-(\lambda_1 + \lambda_2)}\sum_{i = 0}^k \frac{\lambda_1^i}{i!}\frac{\lambda_2^{k - i}}{(k - i)!}\\
+					&=  \frac{1}{k!}e^{-(\lambda_1 + \lambda_2)}\sum_{i = 0}^k {k \choose i} \lambda_1^i\lambda_2^{k - i}\\
+					&= e^{-(\lambda_1 + \lambda_2)}\frac{(\lambda_1 + \lambda_2)^k}{k!}.
+				\end{align*}
+
+				Hence $\xi_1 + \xi_2 \sim \Poi(\lambda_1 + \lambda_2)$.
+		\end{enumerate}
+\end{enumerate}
+%\originalsectionstyle
+\printbibliography
+\end{document}
