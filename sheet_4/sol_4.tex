@@ -1,0 +1,137 @@
+\input{header.tex}
+\DeclareMathOperator{\Poi}{Poi}
+\DeclareMathOperator{\Bin}{Bin}
+
+\title{Solutions Sheet 4}
+\author{Yannis B\"{a}hni}
+\address[Yannis B\"{a}hni]{University of Zurich, R\"{a}mistrasse 71, 8006 Zurich}
+\email[Yannis B\"{a}hni]{\href{mailto:yannis.baehni@uzh.ch}{yannis.baehni@uzh.ch}}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+\begin{enumerate}[label = \textbf{Exercise \arabic*.},wide = 0pt, itemsep=1.5ex]
+	\item To give the proof more structure, it is divided into three steps despite the structure of the exercise itself. I think this is more natural.
+		\begin{lemma}
+			$Q\mid_{\mathcal{A}_0} = P$.
+		\end{lemma}
+
+		\begin{proof}
+			Let $A \in \mathcal{A}_0$. Consider the sequence $(B_n)_{n \in \mathbb{N}}$ in $\mathcal{A}_0$ defined by 
+			\begin{align*}
+				B_n := \begin{cases}
+					A & n = 1\\
+					\varnothing & n > 1
+				\end{cases}.
+			\end{align*}
+
+			Clearly $A \subseteq \bigcup_{n \in \mathbb{N}}B_n$ and thus
+			\begin{equation}
+				Q(A) \leq \sum_{n \in \mathbb{N}} P(B_n) = P(A).
+			\end{equation}
+
+			Let $(B_n)_{n \in \mathbb{N}}$ be a sequence in $\mathcal{A}_0$ such that $A \subseteq \bigcup_{n \in \mathbb{N}} B_n$. Therefore $A = \bigcup_{n \in \mathbb{N}} (B_n \cap A)$ and thus by subadditivity of $P$
+			\begin{equation}
+				P(A) \leq \sum_{n \in \mathbb{N}} P(A_n \cap A) \leq \sum_{n \in \mathbb{N}} P(A_n).
+			\end{equation}
+
+			Thus $P(A) \leq Q(A)$ since the sequences were arbitrary.
+		\end{proof}
+		\begin{lemma}
+			$Q: 2^\Omega \to \intcc{0,\infty}$ is an outer measure.
+		\end{lemma}
+		\begin{proof}
+		Clearly $Q(\varnothing) = 0$ by the observation tha $\varnothing \subseteq \bigcup_{n \in \mathbb{N}} B_n$ where $B_n := \varnothing$ for all $n \in \mathbb{N}$ and that $P(\varnothing) = 0$ since $P$ is a probability. Observe that if $(B_n)_{n \in \mathbb{N}}$ is a sequence in $\mathcal{A}_0$ such that $B \subseteq \bigcup_{n \in \mathbb{N}}B_n$ we also have $A \subseteq \bigcup_{n \in \mathbb{N}}B_n$ since $A \subseteq B$. Hence the infimum in $Q(A)$ is taken on a large set than $Q(B)$, thus $Q(A) \leq Q(B)$. Let $(A_n)_{n \in \mathbb{N}}$ be a sequence in $2^\Omega$. For any $A \in 2^\Omega$ and $\varepsilon > 0$ we find by definition of $Q(A)$ a sequence $(B_n)_{n \in \mathbb{N}}$ in $\mathcal{A}_0$ such that $A \subseteq \bigcup_{n \in \mathbb{N}} B_n$ and 
+		\begin{equation}
+			Q(A) \leq \sum_{n \in \mathbb{N}} P(B_n) < Q(A) + \varepsilon.
+		\end{equation}
+
+		Thus for any $n \in \mathbb{N}$ we find a sequence $(B_{n,k})_{k \in \mathbb{N}}$ in $\mathcal{A}_0$ such that
+		\begin{equation}
+			\sum_{k \in \mathbb{N}} P(B_{n,k}) \leq Q(A_n) + \frac{\varepsilon}{2^n} \qquad n \in \mathbb{N}  
+		\end{equation}
+
+		\noindent and $A_n \subseteq \bigcup_{k \in \mathbb{N}} B_{n,k}$. Clearly $\bigcup_{n \in \mathbb{N}} A_n \subseteq \bigcup_{n \in \mathbb{N}}\bigcup_{k \in \mathbb{N}} B_{n,k}$ and so
+		\begin{equation}
+			Q\del[4]{\bigcup_{n \in \mathbb{N}} A_n} \leq \sum_{n \in \mathbb{N}}\sum_{k \in \mathbb{N}} P(B_{n,k}) \leq \sum\limits_{n \in \mathbb{N}}Q(A_n) + \varepsilon.
+		\end{equation} 
+	\end{proof}
+
+	\begin{lemma}
+		Each $B \in \mathcal{A}_0$ is $Q$-measurable.
+	\end{lemma}
+
+	\begin{proof}
+		
+	\end{proof}
+	\item 
+
+	\item 
+		\begin{lemma}
+			Let $F: \mathbb{R} \to \mathbb{R}$ be a distribution function. Then
+			\begin{equation}
+				P\intoo{a,b} = F(b-) - F(a) \qquad \text{and} \qquad P\intco{a,b} = F(b- ) - F(a-).
+			\end{equation}
+			\noindent holds for all $-\infty \leq a < b \leq \infty$.
+			\label{lem:3}
+		\end{lemma}
+
+		\begin{proof}
+			Note that 
+			\begin{equation}
+				\intoo{a,b} = \bigcup_{n \in \mathbb{N}_{>0}} \intoc{-\infty,b - 1/n} \setminus \intoc{-\infty,a}.
+				\label{eq:union}
+			\end{equation}
+
+			By (\ref{eq:union}) and the fact that $F$ induces a probability measure $P$ we have 
+			\begin{align*}
+				P\intoo{a,b} &= P\del[4]{\bigcup_{n \in \mathbb{N}_{>0}} \intoc{-\infty,b - 1/n} \setminus \intoc{-\infty,a}}\\
+				&= P\del[4]{\bigcup_{n \in \mathbb{N}_{>0}} \intoc{-\infty,b - 1/n}} - P\intoc{-\infty,a}\\
+				&= \lim_{n \to \infty} P\intoc{-\infty,b - 1/n} - P\intoc{-\infty,a}\\
+				&= \lim_{n \to \infty} F(b - 1/n) - F(a)\\
+				&= F(b-) - F(a).
+			\end{align*}
+
+			The second statement follows similarly from
+			\begin{equation}
+				\intco{a,b} = \bigcup_{n \in \mathbb{N}_{>0}} \intoc{-\infty,b - 1/n} \setminus \bigcup_{n \in \mathbb{N}_{>0}}\intoc{-\infty,a - 1/n}
+			\end{equation}
+		\end{proof}
+		
+		\begin{remark}
+			Note that for any $x \in \mathbb{R}$ the limit $F(x-)$ exists since $F$ is monotone increasing and bounded from above by $1$. Indeed, towards a contradiction assume that there exists some $x_0 \in \mathbb{R}$ such that $F(x_0) > 1$. Hence $F(x_0) - 1 > 0$ and so there exsist $M \in \mathbb{R}$ such that $F(x) < F(x_0)$ for all $x > M$. Contradiction.
+		\end{remark}
+		$F: \mathbb{R} \to \mathbb{R}$ can be rewritten as 
+		\begin{equation}
+			F(x) = \frac{1}{4}\chi_{\intco{0,1}}(x) + \frac{3}{4}\chi_{\intco{1,2}}(x) + \chi_{\intco{2,\infty}}(x).
+		\end{equation}
+	
+		Clearly $F$ is monotone increasing, continuous on the right and
+		\begin{equation}
+			\lim_{x \to -\infty} F(x) = 0 \qquad \text{and} \qquad \lim_{x \to \infty} F(x) = 1.
+		\end{equation}
+
+		Thus there exists a unique probability measure $P$ on $(\mathbb{R},\mathcal{B}(\mathbb{R}))$ such that 
+		\begin{equation}
+			F\intoc{a,b} = F(b) - F(a)
+		\end{equation}
+		\noindent for all $-\infty \leq a < b < \infty$. From lemma \ref{lem:3} immediately follows
+		\begin{equation*}
+			P(A) = 1 \qquad  P(B) = 1 \qquad  P(C) = 0 \qquad  P(D) = \frac{3}{4} \qquad P(E) = 0.
+		\end{equation*}
+		
+		\item
+			~
+			\begin{enumerate}[label = \arabic*.,wide = 0pt, itemsep=1.5ex]
+				\item An example would be the function $F: \mathbb{R} \to \mathbb{R}$ defined by
+					\begin{equation}
+						F(x) := \sum_{n = 1}^\infty (1 - 1/n) \chi_{\intco{n-1,n}}(x).
+					\end{equation}
+
+					$F$ is discontinuous at any $n \in \mathbb{N}_{>0}$.
+			\end{enumerate}
+
+\end{enumerate}
+%\originalsectionstyle
+\printbibliography
+\end{document}
