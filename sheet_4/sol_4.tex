@@ -62,7 +62,18 @@
 	\end{lemma}
 
 	\begin{proof}
-		
+		Let $A \subseteq \Omega$. Let $\varepsilon > 0$. In the same manner as in question $2$ we find a sequence $(A_n)_{n \in \mathbb{N}}$ in $\mathcal{A}_0$ such that 
+		\begin{equation}
+			\sum_{n \in \mathbb{N}} P(A_n) - \varepsilon \leq Q(A).
+		\end{equation}
+
+		Furthermore
+		\begin{equation}
+			Q(A) \geq \sum_{n \in \mathbb{N}}P(A_n \cap B) + \sum_{n \in \mathbb{N}} P(A_n \cap B^c) - \varepsilon \geq Q(A \cap B) + Q(A \cap B^c) - \varepsilon
+		\end{equation}
+
+		\noindent by the additivity of $P$.
+
 	\end{proof}
 	\item 
 
@@ -72,7 +83,7 @@
 			\begin{equation}
 				P\intoo{a,b} = F(b-) - F(a) \qquad \text{and} \qquad P\intco{a,b} = F(b- ) - F(a-).
 			\end{equation}
-			\noindent holds for all $-\infty \leq a < b \leq \infty$.
+			\noindent holds for all $-\infty \leq a < b \leq \infty$ in the first case and $-\infty < a < b \leq \infty$ in the second.
 			\label{lem:3}
 		\end{lemma}
 
