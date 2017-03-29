@@ -1,0 +1,64 @@
+\input{header.tex}
+\DeclareMathOperator{\Poi}{Poi}
+\DeclareMathOperator{\Bin}{Bin}
+\DeclareMathOperator{\Var}{Var}
+\newcommand\Psf{\mathsf{P}}
+\newcommand\Esf{\mathsf{E}}
+
+
+\title{Solutions Sheet 5}
+\author{Yannis B\"{a}hni}
+\address[Yannis B\"{a}hni]{University of Zurich, R\"{a}mistrasse 71, 8006 Zurich}
+\email[Yannis B\"{a}hni]{\href{mailto:yannis.baehni@uzh.ch}{yannis.baehni@uzh.ch}}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+\begin{enumerate}[label = \textbf{Exercise \arabic*.},wide = 0pt, itemsep=1.5ex]
+	\item Let $\beta \in \mathbb{R}_{> 0}$ and $\alpha \in \mathbb{R}$. Define $f: \mathbb{R} \to \mathbb{R}$ by 
+		\begin{equation}
+			f(x) := \frac{c}{1 + (x - \alpha)^2/\beta^2}
+		\end{equation}
+		\noindent for some $c \in \mathbb{R}$. Clearly $f \in \mathscr{C}(\mathbb{R})$ and thus Borel-measurable.. From a standard fact of real analysis follows that the function $\Psf: \mathscr{B}(\mathbb{R}) \to \overline{\mathbb{R}}$ defined by
+		\begin{equation}
+			\Psf(A) := \int_A f \d \lambda
+		\end{equation}
+
+		\noindent is a measure. We now determine $c \in \mathbb{R}$ such that $\Psf$ is a probability measure. The substitution $s = (x - \alpha)/\beta$ yields
+		\begin{align*}
+			\Psf(\mathbb{R}) &= \int_{- \infty}^\infty f \d \lambda\\ &= c\int_{-\infty}^\infty\frac{1}{1 + (x - \alpha)^2/\beta^2}\d \lambda(x)\\
+			&= c\beta\int_{-\infty}^\infty\frac{1}{1 + s^2}\d \lambda(s)\\ 
+			&= c\beta \arctan \vert_{- \infty}^\infty\\
+			&= c\beta \pi
+		\end{align*}
+
+		\noindent and by $\Psf(\mathbb{R}) = 1$ we conclude $c = 1/(\beta \pi)$. The distribution function $F$ of $\Psf$ is now given by
+		\begin{align*}
+			F(t) &= \Psf(\intoc{-\infty,t})\\
+			&= \int_{-\infty}^t f\d \lambda\\
+			&= \frac{1}{\beta \pi}\int_{-\infty}^t\frac{1}{1 + (x - \alpha)^2/\beta^2}\d \lambda(x)\\
+			&= \frac{1}{\pi}\int_{-\infty}^{(t - \alpha)/\beta}\frac{1}{1 + s^2}\d \lambda(s)\\
+			&= \frac{1}{\pi}\arctan((t - \alpha)/\beta) + \frac{1}{2}
+		\end{align*}
+		\noindent for any $t \in \mathbb{R}$.
+
+	\item
+
+	\item Let $\varepsilon > 0$. Since $\Esf(X) = np$ and $\Var(X) = np(1 - p)$ Chebychev's inequality implies
+		\begin{align*}
+			\lim_{n \to \infty} \Psf(\abs[0]{X - np} \leq n\varepsilon) &= \lim_{n \to \infty} \Psf(\abs[0]{X - \Esf(X)} \leq n\varepsilon)\\
+			&= 1 - \lim_{n \to \infty} \Psf(\abs[0]{X - \Esf(X)} > n\varepsilon)\\
+			&\geq1 - \lim_{n \to \infty}\frac{\Var(X)}{n^2\varepsilon^2}\\
+			&= 1 - \lim_{n \to \infty} \frac{np(1 - p)}{n^2\varepsilon^2}\\
+			&= 1 - \lim_{n\to \infty}\frac{p(1 - p)}{n\varepsilon^2}\\
+			&= 1
+		\end{align*}
+
+		Since $\Psf(\abs[0]{X - np} \leq n\varepsilon) \leq 1$ for all $n \in \mathbb{N}$ we conclude that
+		\begin{equation}
+			\lim_{n \to \infty}\Psf(\abs[0]{X - np} \leq n\varepsilon) = 1.
+		\end{equation}
+\end{enumerate}
+%\originalsectionstyle
+\printbibliography
+\end{document}
