@@ -1,0 +1,48 @@
+\input{header.tex}
+\DeclareMathOperator{\Poi}{Poi}
+\DeclareMathOperator{\Bin}{Bin}
+\DeclareMathOperator{\Var}{Var}
+\newcommand\Psf{\mathsf{P}}
+\newcommand\Esf{\mathsf{E}}
+
+
+\title{Solutions Sheet 6}
+\author{Yannis B\"{a}hni}
+\address[Yannis B\"{a}hni]{University of Zurich, R\"{a}mistrasse 71, 8006 Zurich}
+\email[Yannis B\"{a}hni]{\href{mailto:yannis.baehni@uzh.ch}{yannis.baehni@uzh.ch}}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+\begin{enumerate}[label = \textbf{Exercise \arabic*.},wide = 0pt, itemsep=1.5ex]
+	\item See separate sheet.
+	\item See separate sheet.
+	\item See separate sheet.
+	\item Let $(X_n)_{n \in \mathbb{N}}$ be a sequence of independent random variables. For $n,k \in \mathbb{N}$, $n \geq k$, set
+		\begin{equation}
+			S_n := \sum_{i = 1}^ n X_i \qquad \text{and} \qquad S_{n,k} := \sum_{i = k}^n X_i.
+		\end{equation}
+
+		We claim, that
+		\begin{equation}
+			\cbr[0]{(S_n/n)_{n \in \mathbb{N}} \text{ converges}} = \cbr[0]{(S_{n,k}/n)_{n \geq k} \text{ converges}}
+		\end{equation}
+		\noindent for all $k \in \mathbb{N}$. Assume that $\omega \in \Omega$ belongs to the set on the left. Then
+		\begin{equation}
+			\lim_{n \to \infty}\frac{S_{n,k}(\omega)}{n} = \lim_{n \to \infty}\frac{S_n(\omega) - S_{k-1}(\omega)}{n} = \lim_{n \to \infty} \frac{S_n(\omega)}{n} - \lim_{n \to \infty} \frac{S_{k - 1}(\omega)}{n} = \lim_{n \to \infty}\frac{S_n(\omega)}{n} 
+		\end{equation}
+		\noindent implies that $(S_{n,k}(\omega)/n)_{n \geq k}$ also converges. Conversly
+		\begin{equation}
+			\lim_{n \to \infty}\frac{S_{n}(\omega)}{n} = \lim_{n \to \infty}\frac{S_n(\omega) - S_{k-1}(\omega) + S_{k -1}(\omega)}{n} = \lim_{n \to \infty} \frac{S_{n,k}(\omega)}{n} 
+		\end{equation}
+		\noindent implies that $(S_n(\omega)/n)_{n \in \mathbb{N}}$ converges whenever $(S_{n,k}(\omega)/n)_{n \geq k}$ converges. Now fix $k \in \mathbb{N}$. Then $\sigma(X_k,X_{k + 1},\dots)$ is the smallest $\sigma$-algebra on $\Omega$ that makes each $X_k,X_{k + 1},\dots$ measurable (see \cite[309]{cohn:measure_theory:2013}). Hence each $S_{n,k}/n$, $n \geq k$, is measurable with respect to $\sigma(X_k,X_{k + 1},\dots)$ as a scalar multiple of a finite sum of measurable functions. So by exercise $4$ \cite[49]{cohn:measure_theory:2013} we have that
+		\begin{equation}
+			\cbr[0]{(S_{n,k}/n)_{n \geq k} \text{ converges}} \in \sigma(X_k,X_{k + 1},\dots).
+		\end{equation}
+		Thus $\cbr[0]{(S_n/n)_{n \in \mathbb{N}} \text{ converges}} \in \bigcap_{k \in \mathbb{N}} \sigma(X_k,X_{k + 1},\dots)$ and therefore $\Psf(\cbr[0]{(S_n/n)_{n \in \mathbb{N}} \text{ converges}})$ is either $0$ or $1$ by Kolmogorov's zero-one law.
+
+
+\end{enumerate}
+%\originalsectionstyle
+\printbibliography
+\end{document}
