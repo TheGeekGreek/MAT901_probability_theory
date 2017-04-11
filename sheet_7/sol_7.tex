@@ -1,0 +1,82 @@
+\input{header.tex}
+\DeclareMathOperator{\Poi}{Poi}
+\DeclareMathOperator{\Bin}{Bin}
+\DeclareMathOperator{\Var}{Var}
+\newcommand\Psf{\mathsf{P}}
+\newcommand\Esf{\mathsf{E}}
+
+
+\title{Solutions Sheet 7}
+\author{Yannis B\"{a}hni}
+\address[Yannis B\"{a}hni]{University of Zurich, R\"{a}mistrasse 71, 8006 Zurich}
+\email[Yannis B\"{a}hni]{\href{mailto:yannis.baehni@uzh.ch}{yannis.baehni@uzh.ch}}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+\underline{Remark:} We use here the results \cite[289--290]{shiryaev2016probability}, so our results may differ on a set of Lebesgue measure zero, since the Radon-Nikod\'ym derivative (the density) is unique up to equality on a set of measure zero. Central is the following proposition.
+\begin{proposition}
+	Let $\varphi$ be defined on the set $\sum_{k = 1}^n\intcc{a_k,b_k}$, continuously differentiable and either strictly increasing or strictly decreasing on each open interval $I_k := \intoo{a_k,b_k}$, and with $\varphi'(x) \neq 0$ for $x \in I_k$. Let $h_k(y)$ be the inverse of $\varphi$ on $I_k$. Then for $\eta := \varphi(\xi)$ we have
+	\begin{equation}
+		\boxed{f_\eta(y) = \sum_{k = 1}^n f_\xi(h_k(y))\abs[0]{h'_k(y)}\chi_{D_k}(y)}
+	\end{equation}
+	\noindent where $D_k$ denotes the domain of $h_k$.
+\end{proposition}
+\begin{enumerate}[label = \textbf{Exercise \arabic*.},wide = 0pt, itemsep=1.5ex]		
+	\item Let $k \in \mathbb{N}$. Define $\varphi: \mathbb{R} \to \mathbb{R}$ by $\varphi(x) := x^k$. For $k$ odd, we have that $\varphi$ is strictly increasing on $\intoo{-\infty,0}$ and $\intoo{0,\infty}$. Furthermore, $\varphi'(x) \neq 0$ on both intervals. Thus for $\eta := \xi^k$ and $y \in \mathbb{R}$ we have
+		\begin{align*}
+			f_\eta(y) &= \frac{1}{k}f_\xi(y^{1/k})\abs[0]{y^{1/k - 1}}\chi_{\intoo{-\infty,0} \cup \intoo{0,\infty}}(y)\\
+			&= \frac{1}{2k}\chi_{\intcc{-1,1}}(y^{1/k})\abs[0]{y^{1/k - 1}}\chi_{\intoo{-\infty,0} \cup \intoo{0,\infty}}(y)\\
+			&= \frac{1}{2k}\chi_{\intcc{-1,1}}(y)\abs[0]{y^{1/k - 1}}\chi_{\intoo{-\infty,0} \cup \intoo{0,\infty}}(y)\\
+			&= \frac{1}{2k}\abs[0]{y^{1/k - 1}}\chi_{\intco{-1,0} \cup \intoc{0,1}}(y)\\
+			&= \frac{1}{2k}y^{1/k - 1}\chi_{\intco{-1,0} \cup \intoc{0,1}}(y)
+		\end{align*}
+		\noindent if we adapt the convention of taking always the positive root $y^{1/k - 1}$ if it exists, which here is always the case, since if $k$ is odd we have $k = 2n + 1$ for some $n \in \mathbb{N}_0$ and thus 
+		\begin{equation}
+			\frac{1}{k} - 1 = \frac{1}{2n + 1} - 1 = -\frac{2n}{2n + 1}
+		\end{equation}
+		\noindent which has an even numerator. For $k$ even $\varphi$ is strictly decreasing on $\intoo{-\infty,0}$ and strictly increasing on $\intoo{0,\infty}$. Thus
+		\begin{align*}
+			f_\eta(y) = \begin{cases}
+				\frac{1}{k}\sbr[0]{f_\xi(-y^{1/k}) + f_\xi(y^{1/k})}y^{1/k} & y > 0,\\
+				0 & y \leq 0.
+			\end{cases}
+		\end{align*}
+
+		Furthermore, for $y > 0$ we have
+		\begin{equation}
+			f_\eta(y) = \frac{1}{2k}\sbr[0]{\chi_{\intoc{0,1}}(-y^{1/k}) + \chi_{\intoc{0,1}}(y^{1/k})}y^{1/k} = \frac{1}{k}\chi_{\intoc{0,1}}(y)y^{1/k - 1}.
+		\end{equation}
+	\item If $\eta := \abs[0]{\xi}$, it is evident that $F_\eta(y) = 0$ for $y < 0$, while for $y \geq 0$
+		\begin{equation}
+			F_\eta(y) = \Psf(\abs[0]{\xi} \leq y) = \Psf(-y \leq \xi \leq y) = F_\xi(y) - F_\xi(-y) + \Psf(\xi = - y).
+		\end{equation} 
+		The function $\varphi: \mathbb{R} \to \mathbb{R}$ defined by $\varphi(x) := \abs[0]{x}$ is strictly decreasing on $\intoo{-\infty,0}$ and strictly increasing on $\intoo{0,\infty}$. Furthermore the respective inverse functions $h_1: \intoo{0,\infty} \to \intoo{-\infty,0}$ and $h_2: \intoo{0,\infty} \to \intoo{0,\infty}$ are given by 
+		\begin{equation}
+			h_1(y) := -y \qquad \text{and} \qquad h_2(y) := y.
+		\end{equation}
+		Thus we get
+		\begin{equation}
+			f_\eta(y) = \sbr[0]{f_\xi(-y) + f_\xi(y)}\chi_{\intoo{0,\infty}}.
+		\end{equation}
+	\item
+	\item
+	\item Consider the function $\varphi: \intoo{0,\infty} \to \mathbb{R}$ defined by $\varphi(x) := 1/(x + 1)$. By 
+		\begin{equation}
+			\varphi'(x) = -\frac{1}{(x + 1)^2}
+		\end{equation}
+		\noindent we see that $\varphi$ is strictly decreasing on $\intoo{0,\infty}$ and $\varphi'$ does not vanish on $\intoo{0,\infty}$. Furthermore by $\lim_{x \to \infty}\varphi(x) = 0$ and $\lim_{x \searrow 0}\varphi(x) = 1$ (this is immediate by extending $\varphi$) we have that $\varphi(\intoo{0,\infty}) = \intoo{0,1}$. Furthermore the inverse function $h: \intoo{0,1} \to \intoo{0,\infty}$ of $\varphi$ is seen to be
+		\begin{equation}
+			h(y) = \frac{1 - y}{y}.
+		\end{equation}
+		Thus we get for $\eta := 1/(\xi + 1)$, $\xi > 0$,
+		\begin{align*}
+			f_\eta(y) = \begin{cases}
+				\frac{1}{y^2}f_\xi ((1 - y)/y) & y \in \intoo{0,1},\\
+				0 & y \in \intoc{-\infty,0} \cup \intco{1,\infty}.
+			\end{cases}
+		\end{align*}
+\end{enumerate}
+%\originalsectionstyle
+\printbibliography
+\end{document}
