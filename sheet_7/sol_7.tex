@@ -60,7 +60,64 @@
 			f_\eta(y) = \sbr[0]{f_\xi(-y) + f_\xi(y)}\chi_{\intoo{0,\infty}}.
 		\end{equation}
 	\item
-	\item
+		~
+		\begin{enumerate}[label = \arabic*.,wide = 0pt, itemsep=1.5ex]
+			\item Define $\varphi: \intoo{-\pi/2,\pi/2} \to \mathbb{R}$ by $\varphi(x) := \tan x$. From
+				\begin{equation}
+					\varphi'(x) = \frac{1}{\cos^2x}
+				\end{equation}
+				\noindent we see that that $\varphi$ is strictly increasing on $\intoo{-\pi/2,\pi/2}$ and $\varphi'$ does not vanish on $\intoo{-\pi/2,\pi/2}$. The inverse function $h: \mathbb{R} \to \intoo{-\pi/2,\pi/2}$ is clearly given by $h(y) = \arctan y$. Thus for $\eta := \tan \xi$ we have
+				\begin{equation}
+					f_\eta(y) = f_\xi(\arctan y)\frac{1}{1 + y^2} = \frac{1}{\pi} \frac{1}{1 + y^2}\chi_{\intoo{-\pi/2,\pi/2}}(\arctan y) = \frac{1}{\pi} \frac{1}{1 + y^2}
+				\end{equation}
+				\noindent for all $y \in \mathbb{R}$.
+			\item Define $\varphi: \intcc{-\pi/2,\pi/2} \to \intcc{0,1}$ by $\varphi(x) := \sin^2 x$. Then by
+				\begin{equation}
+					\varphi'(x) = 2\sin x \cos x = \sin(2x)
+				\end{equation}
+				\noindent it is easily seen that $\varphi$ is strictly decreasing on $\intoo{-\pi/2,0}$ and strictly increasing on $\intoo{0,\pi/2}$. Furthermore the inverse functions $h_1: \intoo{0,1} \to \intoo{-\pi/2,0}$ and $h_2: \intoo{0,1} \to \intoo{0,\pi/2}$ are given by 
+				\begin{equation}
+					h_1(y) := \arcsin(-\sqrt{y}) \qquad \text{and} \qquad h_2(y) := \arcsin(\sqrt{y}).
+				\end{equation}
+				Thus we get
+				\begin{align*}
+					f_\eta(y) = \begin{cases}
+						\frac{1}{2\sqrt{y}\sqrt{1 - y}}\sbr{f_\xi(\arcsin(-\sqrt{y})) + f_\xi(\arcsin(\sqrt{y}))} & x \in \intoo{0,1}\\
+						0 & y \in \intoo{0,1}^c.
+					\end{cases}
+				\end{align*}
+
+				Furthermore for $y \in \intoo{0,1}$ this yields
+				\begin{equation}
+					f_\eta(y) = \frac{1}{2\sqrt{y}\sqrt{1 - y}}\sbr{f_\xi(\arcsin(-\sqrt{y})) + f_\xi(\arcsin(\sqrt{y}))} = \frac{1}{\pi\sqrt{y}\sqrt{1 - y}}
+				\end{equation}
+				\noindent which is for sure continuous on $\intoo{0,1}$.
+		\end{enumerate}
+	\item Let $\xi$ be Cauchy distributed with parameters $(\alpha,1)$, $\alpha \in \mathbb{R}$, i.e.
+		\begin{equation}
+			f_\xi(x) = \frac{1}{\pi}\frac{1}{1 + (x - \alpha)^2}.
+		\end{equation}
+		Furthermore we can assume that $\xi \neq 0$. Consider the function $\varphi: \mathbb{R} \to \mathbb{R}$ defined by 
+		\begin{align*}
+			\varphi(x) := \begin{cases}
+				1/x & x \in \mathbb{R}^\times,\\
+				0 & x = 0.
+			\end{cases}
+		\end{align*}
+		Then we have
+		\begin{align*}
+			f_\eta(y) &= \frac{\abs[0]{a}}{y^2} \sbr[0]{f_\xi(a/y)\chi_{\intoo{-\infty,0}} + f_\xi(a/y)\chi_{\intoo{0,\infty}}}\\
+			&= \frac{\abs[0]{a}}{\pi y^2} \frac{1}{1 + (a/y - \alpha)^2}\chi_{\mathbb{R}^\times}\\
+			&=\frac{\abs[0]{a}}{\pi y^2} \frac{1}{1 + a^2/y^2 - 2a\alpha/y + \alpha^2}\chi_{\mathbb{R}^\times}\\
+			&= \frac{\abs[0]{a}}{\pi} \frac{1}{(1 + \alpha^2)y^2 + a^2 - 2a\alpha y}\chi_{\mathbb{R}^\times}\\
+			&= \frac{\abs[0]{a}}{\pi}\frac{1}{(1 + \alpha^2)y^2 - 2a\alpha y + a^2\alpha^2/(1 + \alpha^2) + a^2 - a^2\alpha^2/(1 + \alpha^2)}\chi_{\mathbb{R}^\times}\\
+			&= \frac{\abs[0]{a}}{\pi}\frac{1}{(1 + \alpha^2)(y - a\alpha/(1 + \alpha^2))^2 + a^2/(1 + \alpha^2)}\chi_{\mathbb{R}^\times}\\
+			&= \frac{1}{\pi}\frac{\abs[0]{a}/(1 + \alpha^2)}{(y - a\alpha/(1 + \alpha^2))^2 + \abs[0]{a}^2/(1 + \alpha^2)^2}\chi_{\mathbb{R}^\times}
+		\end{align*}
+		\noindent and thus $\eta$ is Cauchy distributed with parameters
+		\begin{equation}
+			\del{\frac{a\alpha}{1 + \alpha^2},\frac{\abs[0]{a}}{1 + \alpha^2}}.
+		\end{equation}
 	\item Consider the function $\varphi: \intoo{0,\infty} \to \mathbb{R}$ defined by $\varphi(x) := 1/(x + 1)$. By 
 		\begin{equation}
 			\varphi'(x) = -\frac{1}{(x + 1)^2}
